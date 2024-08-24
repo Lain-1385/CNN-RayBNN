@@ -1,0 +1,17 @@
+#!/bin/bash -l
+#SBATCH --job-name=CNN_part   # Name of job
+#SBATCH --account=def-xdong    # adjust this to match the accounting group you are using to submit jobs
+#SBATCH --time=0-01:00          # 2 hours
+#SBATCH --cpus-per-task=6         # CPU cores/threads
+#SBATCH --gpus-per-node=a100:1
+#SBATCH --mem=64G
+
+module load StdEnv/2020 gcc/9.3.0 cuda/12.2 openmpi/4.0.3 arrayfire/3.9.0 rust/1.70.0 python/3.11.5 scipy-stack glfw
+
+source /scratch/lain1385/project/RayBNN_Python/magic/bin/activate
+
+# pip install /scratch/cxyycl/raybnn_python-0.1.2-cp311-cp311-linux_x86_64.whl
+
+#python /home/lain1385/scratch/project/CNN_with_RayBNN/run_CNN_tao.py
+
+python /home/lain1385/scratch/project/CNN_with_RayBNN/run_RayBNN_tao.py
